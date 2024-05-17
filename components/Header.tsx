@@ -61,7 +61,7 @@ function Header() {
           href="/"
           className="flex text-white items-center space-x-2 text-sm"
         >
-          <Heart />
+          <Heart size={20} />
           <div className="text-center">
             <p className="font-extralight">Reorder</p>
             <p className="font-bold">My Items</p>
@@ -72,7 +72,7 @@ function Header() {
           href="/"
           className="flex  text-white items-center space-x-2 text-sm"
         >
-          <User />
+          <User size={20} />
           <div className="text-center">
             <p className="font-extralight">Sign In</p>
             <p className="font-bold">Account</p>
@@ -82,7 +82,7 @@ function Header() {
           href="/basket"
           className="flex  text-white items-center space-x-2 text-sm"
         >
-          <ShoppingBasket />
+          <ShoppingBasket size={20} />
           <div className="text-center">
             <p className="font-extralight">No Items</p>
             <p className="font-bold">$0.00</p>
