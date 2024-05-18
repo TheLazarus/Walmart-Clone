@@ -3,7 +3,7 @@ import GridOption from "@/components/GridOption";
 export default function Home() {
   return (
     <main className="">
-      <div className="">
+      <div className=" grid grid-cols-1 md:grid-cols-4 grid-flow-row-dense gap-6 m-6">
         <GridOption
           title="Sweet gifts for less"
           image="https://links.papareact.com/1dy"
@@ -12,12 +12,12 @@ export default function Home() {
         <GridOption
           title="Shop Wardrobe"
           image="https://links.papareact.com/8ko"
-          className=" h-full md:h-32 bg-blue-100"
+          className=" h-fullbg-blue-100 col-span-2 row-span-2"
         />
         <GridOption
           title="Shop Home"
           image="https://links.papareact.com/szu"
-          className="h-full md:h-32 bg-pink-200"
+          className="h-full  bg-pink-200 row-span-2"
         />
         <GridOption
           title="Shop Electronics"
@@ -25,19 +25,24 @@ export default function Home() {
           className="h-full md:h-32  bg-yellow-100"
         />
         <GridOption
-          title="Sweet gifts for less"
+          title="Shop Toys"
           image="https://links.papareact.com/pj2"
-          className="bg-pink-200 h-full md:h-32"
+          className="bg-pink-200 h-full md:h-32 col-span-2"
         />
         <GridOption
-          title="Sweet gifts for less"
+          title="All you need for match day"
           image="https://links.papareact.com/1dy"
-          className="bg-pink-200 h-full md:h-32"
+          className="bg-pink-200 h-full row-span-2"
         />
         <GridOption
-          title="Sweet gifts for less"
+          title="Shop Gadgets"
           image="https://links.papareact.com/1dy"
-          className="bg-pink-200 h-full md:h-32"
+          className="bg-pink-200 h-full row-span-2"
+        />
+        <GridOption
+          title="Shop Beauty"
+          image="https://links.papareact.com/1dy"
+          className="bg-pink-200 h-full row-span-2"
         />
       </div>
     </main>
