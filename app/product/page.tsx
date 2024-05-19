@@ -5,7 +5,20 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
+import { Badge } from "@/components/ui/badge";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableFooter,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 
 type Props = {
   searchParams: {
@@ -17,7 +30,7 @@ async function ProductPage({ searchParams: { url } }: Props) {
   const product = await fetchProduct(url);
   if (!product) return notFound();
   return (
-    <div>
+    <div className="flex p-4 lg:p-10 flex-col lg:flex-row w-full">
       <div className="hidden lg:inline space-y-4">
         {product.images.map((image, i) => (
           <Image
@@ -31,7 +44,10 @@ async function ProductPage({ searchParams: { url } }: Props) {
         ))}
       </div>
 
-      <Carousel opts={{ loop: true }}>
+      <Carousel
+        opts={{ loop: true }}
+        className="w-3/5 mb-10 lg:mb-0 lg:w-1/4 self-start flex items-center max-w-xl mx-auto lg:mx-20"
+      >
         <CarouselContent>
           {product.images.map((image, i) => (
             <CarouselItem key={image}>
@@ -48,7 +64,63 @@ async function ProductPage({ searchParams: { url } }: Props) {
             </CarouselItem>
           ))}
         </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
       </Carousel>
+
+      <div className="flex-1 border rounded-md w-full p-5 space-y-5">
+        <h1 className="text-3xl font-bold">{product.title}</h1>
+
+        <div className="space-x-2">
+          {product.breadcrumbs.map((breadcrumb) => (
+            <Badge key={breadcrumb} variant="outline">
+              {breadcrumb}
+            </Badge>
+          ))}
+        </div>
+        <div
+          dangerouslySetInnerHTML={{ __html: product.description }}
+          className="py-5"
+        />
+
+        {product.rating ? (
+          <p className="text-yellow-500 text-sm">
+            {product.rating.rating} *
+            <span className="text-gray-400 ml-2">
+              {product.rating.count} Reviews
+            </span>
+          </p>
+        ) : null}
+
+        <p className="text-2xl font-bold mt-2">
+          {product?.currency} {product?.price}
+        </p>
+
+        <hr />
+
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Specification</TableHead>
+              <TableHead>Status</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {product.specifications.map((spec) => (
+              <TableRow key={spec.key}>
+                <TableCell className="font-bold">{spec.key}</TableCell>
+                <TableCell>{spec.value}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell colSpan={3}>Total</TableCell>
+              <TableCell className="text-right">$2,500.00</TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      </div>
     </div>
   );
 }
