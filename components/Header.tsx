@@ -1,5 +1,7 @@
 "use client";
 
+import { getCartTotal } from "@/lib/getCartTotal";
+import useCartStore from "@/lib/store";
 import { Grid2X2, Heart, Search, ShoppingBasket, User } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,6 +10,8 @@ import { FormEvent } from "react";
 
 function Header() {
   const router = useRouter();
+  const cart = useCartStore((state) => state.cart);
+  const total = getCartTotal(cart);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -84,8 +88,10 @@ function Header() {
         >
           <ShoppingBasket size={20} />
           <div className="text-center">
-            <p className="font-extralight">No Items</p>
-            <p className="font-bold">$0.00</p>
+            <p className="font-extralight">
+              {cart?.length > 0 ? `${cart.length} items` : "No Items"}
+            </p>
+            <p className="font-bold">{total}</p>
           </div>
         </Link>
       </div>
