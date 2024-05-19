@@ -1,6 +1,6 @@
 import { Organic } from "@/typings/searchTypings";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "./ui/badge";
 
 function Product({ product }: { product: Organic }) {
@@ -22,6 +22,13 @@ function Product({ product }: { product: Organic }) {
 
       {product.badge ? (
         <Badge className="absolute top-2 right-2">{product.badge}</Badge>
+      ) : null}
+
+      {product.rating ? (
+        <p className="text-yellow-500 text-sm">
+          {product.rating.rating}*
+          <span className="text-gray-400 ml-2">{product.rating.count}</span>
+        </p>
       ) : null}
     </Link>
   );
