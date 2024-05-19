@@ -1,7 +1,7 @@
 import { Organic } from "@/typings/searchTypings";
 import Link from "next/link";
 import Image from "next/image";
-import { Badge } from "lucide-react";
+import { Badge } from "./ui/badge";
 
 function Product({ product }: { product: Organic }) {
   return (
@@ -20,7 +20,9 @@ function Product({ product }: { product: Organic }) {
         {product.price.currency} {product.price.price}
       </p>
 
-      {product.badge ? <Badge className="absolute top-2 right-2" /> : null}
+      {product.badge ? (
+        <Badge className="absolute top-2 right-2">{product.badge}</Badge>
+      ) : null}
     </Link>
   );
 }
