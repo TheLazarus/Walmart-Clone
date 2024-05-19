@@ -18,7 +18,7 @@ async function SearchPage(props: Props) {
   return (
     <div className="p-10">
       <h1 className="text-3xl font-bold">Results for {q}</h1>
-      <h2 className="text-md font-light lette">
+      <h2 className="text-md font-light">
         ({results?.content.total_results} results)
       </h2>
       <ul className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-5">
