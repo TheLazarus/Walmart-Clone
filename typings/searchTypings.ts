@@ -28,7 +28,7 @@ export interface Organic {
   url: string;
   image: string;
   price: Price;
-  tite: string;
+  title: string;
   rating: Rating;
   seller: Seller;
   product_id: string;

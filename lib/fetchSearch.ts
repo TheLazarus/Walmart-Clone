@@ -22,6 +22,9 @@ async function fetchSearch(searchTerm: string) {
         Authorization:
           "Basic " + Buffer.from(`${username}:${password}`).toString("base64"),
       },
+      next: {
+        revalidate: 60 * 60,
+      },
     });
     const res = await response.json();
     console.log(res);
