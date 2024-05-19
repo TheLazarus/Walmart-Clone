@@ -21,7 +21,7 @@ async function SearchPage(props: Props) {
       <h2 className="text-md font-light lette">
         ({results?.content.total_results} results)
       </h2>
-      <ul>
+      <ul className="flex flex-col gap-5">
         {results?.content?.organic.map((product) => {
           return (
             <li key={product.product_id}>
