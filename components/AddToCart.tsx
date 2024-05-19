@@ -3,6 +3,7 @@
 import useCartStore from "@/lib/store";
 import { Product } from "@/typings/productTypings";
 import { Button } from "./ui/button";
+import RemoveFromCart from "./RemoveFromCart";
 
 function AddToCart({ product }: { product: Product }) {
   const [cart, addToCart] = useCartStore((state) => [
@@ -21,7 +22,7 @@ function AddToCart({ product }: { product: Product }) {
   if (howManyInCart > 0) {
     return (
       <div className="flex space-x-5 items-center">
-        <Button className="bg-walmart hover:bg-walmart/50">-</Button>
+        <RemoveFromCart product={product} />
         <span>{howManyInCart}</span>
         <Button className="bg-walmart hover:bg-walmart/50" onClick={handleAdd}>
           +
